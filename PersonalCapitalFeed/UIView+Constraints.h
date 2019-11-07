@@ -13,7 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (Constraints)
 
--(void)addConstraintsToSuperviewWithLeadingOffset:(CGFloat)leadingOffset topOffset:(CGFloat)topOffset bottomOffset:(CGFloat)bottomOffset trailingOffset:(CGFloat)trailingOffset;
+-(void)addConstraintsToView:(UIView *)view leadingOffset:(CGFloat)leadingOffset isleadingConstraintActive:(BOOL)isleadingConstraintActive topOffset:(CGFloat)topOffset isTopConstraintActive:(BOOL)isTopConstraintActive
+    bottomOffset:(CGFloat)bottomOffset isBottomConstraintActive:(BOOL)isBottomConstraintActive
+    trailingOffset:(CGFloat)trailingOffset isTrailingConstraintActive:(BOOL)isTrailingConstraintActive;
+- (void)addConstraintsToView:(UIView *)view isCenterHorizontally:(BOOL)isCenterHorizontally isCenterVertically:(BOOL)isCenterVertically;
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "ProminentCollectionViewCell.h"
+#import "UIView+Constraints.h"
 
 @implementation ProminentCollectionViewCell
 
@@ -14,27 +15,30 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height - 100)];
-        self.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.imageView.clipsToBounds = YES;
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         self.imageView.layer.cornerRadius = 0.0;
         [self.contentView addSubview:self.imageView];
+        [self.imageView addConstraintsToView:self.contentView leadingOffset:0 isleadingConstraintActive:YES topOffset:0 isTopConstraintActive:YES bottomOffset:100 isBottomConstraintActive:YES trailingOffset:0 isTrailingConstraintActive:YES];
         
-        self.titleView = [[UILabel alloc] initWithFrame:CGRectMake(10, self.imageView.frame.size.height + 10, self.contentView.frame.size.width - 20, 30)];
+        self.titleView = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.titleView.textAlignment = NSTextAlignmentCenter;
+        [self.titleView setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightRegular]];
         self.titleView.numberOfLines = 1;
-        [self.titleView setFont:[UIFont systemFontOfSize:25 weight:UIFontWeightRegular]];
         [self.contentView addSubview:self.titleView];
+        [self.titleView addConstraintsToView:self.contentView leadingOffset:10 isleadingConstraintActive:YES topOffset:0 isTopConstraintActive:NO bottomOffset:55 isBottomConstraintActive:YES trailingOffset:10 isTrailingConstraintActive:YES];
         
-        self.summaryView = [[UILabel alloc] initWithFrame:CGRectMake(10, self.titleView.frame.origin.y + self.titleView.frame.size.height + 10, self.contentView.frame.size.width - 20, 50)];
+        self.summaryView = [[UILabel alloc] initWithFrame:CGRectZero];
         self.summaryView.numberOfLines = 2;
-        [self.summaryView setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightThin]];
+        [self.summaryView setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightThin]];
         [self.contentView addSubview:self.summaryView];
+        [self.summaryView addConstraintsToView:self.contentView leadingOffset:10 isleadingConstraintActive:YES topOffset:0 isTopConstraintActive:NO bottomOffset:15 isBottomConstraintActive:YES trailingOffset:10 isTrailingConstraintActive:YES];
         
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
-        self.activityIndicator.center = CGPointMake(self.contentView.frame.size.width / 2, self.contentView.frame.size.height / 2);
         self.activityIndicator.alpha = 1.0;
         [self.contentView addSubview:self.activityIndicator];
+        [self.activityIndicator addConstraintsToView:self.contentView isCenterHorizontally:YES isCenterVertically:YES];
     }
     
     return self;

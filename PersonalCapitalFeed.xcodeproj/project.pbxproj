@@ -21,6 +21,7 @@
 		D1EBCA0D236B23A600980D99 /* ParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1EBCA0C236B23A600980D99 /* ParseOperation.m */; };
 		D1EBCA13237068C700980D99 /* FeedImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1EBCA12237068C700980D99 /* FeedImageDownloader.m */; };
 		D1EBCA162370C28300980D99 /* FeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1EBCA152370C28300980D99 /* FeedDetailViewController.m */; };
+		D1EBCA192373B61E00980D99 /* NSString+HtmlDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = D1EBCA182373B61E00980D99 /* NSString+HtmlDecoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		D1EBCA12237068C700980D99 /* FeedImageDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedImageDownloader.m; sourceTree = "<group>"; };
 		D1EBCA142370C28300980D99 /* FeedDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedDetailViewController.h; sourceTree = "<group>"; };
 		D1EBCA152370C28300980D99 /* FeedDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedDetailViewController.m; sourceTree = "<group>"; };
+		D1EBCA172373B61E00980D99 /* NSString+HtmlDecoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HtmlDecoder.h"; sourceTree = "<group>"; };
+		D1EBCA182373B61E00980D99 /* NSString+HtmlDecoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HtmlDecoder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				D17C79A72369034300D9BE91 /* LaunchScreen.storyboard */,
 				D17C79AA2369034300D9BE91 /* Info.plist */,
 				D17C79AB2369034300D9BE91 /* main.m */,
+				D1EBCA172373B61E00980D99 /* NSString+HtmlDecoder.h */,
+				D1EBCA182373B61E00980D99 /* NSString+HtmlDecoder.m */,
 				D1EBC9F7236A0B2000980D99 /* UIView+Constraints.h */,
 				D1EBC9F8236A0B2000980D99 /* UIView+Constraints.m */,
 			);
@@ -232,6 +237,7 @@
 				D17C79AC2369034300D9BE91 /* main.m in Sources */,
 				D1EBC9F9236A0B2000980D99 /* UIView+Constraints.m in Sources */,
 				D1EBCA05236A690B00980D99 /* NetworkRequest.m in Sources */,
+				D1EBCA192373B61E00980D99 /* NSString+HtmlDecoder.m in Sources */,
 				D17C799E2369034100D9BE91 /* SceneDelegate.m in Sources */,
 				D1EBCA162370C28300980D99 /* FeedDetailViewController.m in Sources */,
 			);

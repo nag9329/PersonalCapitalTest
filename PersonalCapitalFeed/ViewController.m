@@ -94,7 +94,7 @@ static NSString *const prominentCellIdentifier = @"ProminentCollectionViewCellId
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
     self.activityIndicator.alpha = 1.0;
     [self.view addSubview:self.activityIndicator];
-    self.activityIndicator.center = CGPointMake([[UIScreen mainScreen]bounds].size.width/2, [[UIScreen mainScreen]bounds].size.height/2);
+    [self.activityIndicator addConstraintsToView:self.view isCenterHorizontally:YES isCenterVertically:YES];
 }
 
 - (void)setupCollectionView
@@ -104,7 +104,7 @@ static NSString *const prominentCellIdentifier = @"ProminentCollectionViewCellId
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
     
-    self.sectionInsets = UIEdgeInsetsMake(50, 20, 50, 20);
+    self.sectionInsets = UIEdgeInsetsMake(20, 20, 20, 20);
     if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         self.itemsPerRow = 3;
     } else {
@@ -116,7 +116,7 @@ static NSString *const prominentCellIdentifier = @"ProminentCollectionViewCellId
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.collectionView];
     
-    [self.collectionView addConstraintsToSuperviewWithLeadingOffset:0 topOffset:0 bottomOffset:0 trailingOffset:0];
+    [self.collectionView addConstraintsToView:self.view leadingOffset:0 isleadingConstraintActive:YES topOffset:0 isTopConstraintActive:YES bottomOffset:0 isBottomConstraintActive:YES trailingOffset:0 isTrailingConstraintActive:YES];
 }
 
 - (void)fetchFeeds
@@ -209,10 +209,10 @@ static NSString *const prominentCellIdentifier = @"ProminentCollectionViewCellId
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat paddingSpace = self.sectionInsets.left * (self.itemsPerRow + 1);
-    CGFloat availableWdith = self.view.frame.size.width - paddingSpace;
-    CGFloat widthPerItem = availableWdith/self.itemsPerRow;
+    CGFloat availableWidth = self.view.frame.size.width - paddingSpace;
+    CGFloat widthPerItem = availableWidth/self.itemsPerRow;
     if(indexPath.row == 0) {
-        return CGSizeMake(availableWdith + 20, availableWdith*0.75);
+        return CGSizeMake(availableWidth + 20, availableWidth * 0.75);
     }
     return CGSizeMake(widthPerItem, widthPerItem);
 }

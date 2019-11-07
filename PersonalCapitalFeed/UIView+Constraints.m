@@ -11,23 +11,28 @@
 
 @implementation UIView (Constraints)
 
--(void)addConstraintsToSuperviewWithLeadingOffset:(CGFloat)leadingOffset topOffset:(CGFloat)topOffset bottomOffset:(CGFloat)bottomOffset trailingOffset:(CGFloat)trailingOffset
+-(void)addConstraintsToView:(UIView *)view leadingOffset:(CGFloat)leadingOffset isleadingConstraintActive:(BOOL)isleadingConstraintActive topOffset:(CGFloat)topOffset isTopConstraintActive:(BOOL)isTopConstraintActive bottomOffset:(CGFloat)bottomOffset isBottomConstraintActive:(BOOL)isBottomConstraintActive trailingOffset:(CGFloat)trailingOffset isTrailingConstraintActive:(BOOL)isTrailingConstraintActive
 {
-    if (self.superview == nil) {
+    if (view == nil) {
         return;
     }
-
-    self.translatesAutoresizingMaskIntoConstraints = false;
-    [[self.leadingAnchor constraintEqualToAnchor:self.superview.leadingAnchor constant:leadingOffset] setActive:true];
-    [[self.topAnchor constraintEqualToAnchor:self.superview.topAnchor constant:topOffset] setActive:true];
-    [[self.bottomAnchor constraintEqualToAnchor:self.superview.bottomAnchor constant:-bottomOffset] setActive:true];
-    [[self.trailingAnchor constraintEqualToAnchor:self.superview.trailingAnchor constant:-trailingOffset] setActive:true];
+    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    [[self.leadingAnchor constraintEqualToAnchor:view.leadingAnchor constant:leadingOffset] setActive:isleadingConstraintActive];
+    [[self.topAnchor constraintEqualToAnchor:view.topAnchor constant:topOffset] setActive:isTopConstraintActive];
+    [[self.bottomAnchor constraintEqualToAnchor:view.safeAreaLayoutGuide.bottomAnchor constant:-bottomOffset] setActive:isBottomConstraintActive];
+    [[self.trailingAnchor constraintEqualToAnchor:view.trailingAnchor constant:-trailingOffset] setActive:isTrailingConstraintActive];
 }
 
--(void)addConstaintsWithHeight:(CGFloat)height width:(CGFloat)width
+- (void)addConstraintsToView:(UIView *)view isCenterHorizontally:(BOOL)isCenterHorizontally isCenterVertically:(BOOL)isCenterVertically
 {
-    [[self.heightAnchor constraintEqualToConstant:height] setActive:true];
-    [[self.widthAnchor constraintEqualToConstant:width] setActive:true];
+    if (view == nil) {
+        return;
+    }
+    
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    [[self.centerXAnchor constraintEqualToAnchor:view.centerXAnchor] setActive:isCenterHorizontally];
+    [[self.centerYAnchor constraintEqualToAnchor:view.centerYAnchor] setActive:isCenterVertically];
 }
 
 @end

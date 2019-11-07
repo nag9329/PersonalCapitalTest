@@ -8,6 +8,7 @@
 
 #import "ParseOperation.h"
 #import "Feed.h"
+#import "NSString+HtmlDecoder.h"
 
 // string contants found in the RSS feed
 static NSString *kChannel = @"channel";
@@ -90,6 +91,7 @@ static NSString *kImageUrl = @"media:content";
 {
     if ([elementName isEqualToString:kItem])
     {
+        [self.workingPropertyString setString:@""];
         self.workingEntry = [[Feed alloc] init];
     } else if ([elementName isEqualToString:kImageUrl])
     {
@@ -111,7 +113,7 @@ static NSString *kImageUrl = @"media:content";
             [self.workingPropertyString setString:@""];  // clear the string for next time
             if ([elementName isEqualToString:kTitle])
             {
-                self.workingEntry.feedTitle = trimmedString;
+                self.workingEntry.feedTitle = [trimmedString stringByDecodingXMLEntities];
             }
             else if ([elementName isEqualToString:kArticleLink])
             {
@@ -119,7 +121,7 @@ static NSString *kImageUrl = @"media:content";
             }
             else if ([elementName isEqualToString:kSummary])
             {
-                self.workingEntry.feedSummary = trimmedString;
+                self.workingEntry.feedSummary = [trimmedString stringByDecodingXMLEntities];
             }
         }
         else if ([elementName isEqualToString:kItem])

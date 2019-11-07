@@ -8,6 +8,7 @@
 
 #import "FeedDetailViewController.h"
 #import <WebKit/WebKit.h>
+#import "UIView+Constraints.h"
 
 @interface FeedDetailViewController ()<WKNavigationDelegate>
 
@@ -32,9 +33,13 @@
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
     self.activityIndicator.alpha = 1.0;
     [self.view addSubview:self.activityIndicator];
-    self.activityIndicator.center = CGPointMake([[UIScreen mainScreen]bounds].size.width/2, [[UIScreen mainScreen]bounds].size.height/2);
+    [self.activityIndicator addConstraintsToView:self.view isCenterHorizontally:YES isCenterVertically:YES];
     [webView addSubview:self.activityIndicator];
+    
+    
     self.navigationItem.title = self.articleTitle;
+    
+    [webView addConstraintsToView:self.view leadingOffset:0 isleadingConstraintActive:YES topOffset:0 isTopConstraintActive:YES bottomOffset:0 isBottomConstraintActive:YES trailingOffset:0 isTrailingConstraintActive:YES];
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
