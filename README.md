@@ -1,6 +1,6 @@
 # PersonalCapitalTest
 
-Personal Capital Test Assessment is to test a developer iOS skills without using any third party libraries and Interface Builder
+Personal Capital Test Assessment is to test a developer's iOS skills without using any third party libraries and Interface Builder
 
 ## Installation
 
